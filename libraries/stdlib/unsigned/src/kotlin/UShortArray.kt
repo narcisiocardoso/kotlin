@@ -43,8 +43,6 @@ public /*inline*/ fun UShortArray(size: Int, init: (Int) -> UShort): UShortArray
     return UShortArray(ShortArray(size) { index -> init(index).toShort() })
 }
 
-@Suppress("FORBIDDEN_VARARG_PARAMETER_TYPE")
 @SinceKotlin("1.3")
-public fun ushortArrayOf(vararg elements: UShort): UShortArray {
-    return UShortArray(elements.size) { index -> elements[index] }
-}
+// TODO: @kotlin.internal.InlineOnly
+public inline fun ushortArrayOf(vararg elements: UShort): UShortArray = elements

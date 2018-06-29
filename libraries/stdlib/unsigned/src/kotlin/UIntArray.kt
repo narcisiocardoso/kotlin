@@ -43,8 +43,6 @@ public /*inline*/ fun UIntArray(size: Int, init: (Int) -> UInt): UIntArray {
     return UIntArray(IntArray(size) { index -> init(index).toInt() })
 }
 
-@Suppress("FORBIDDEN_VARARG_PARAMETER_TYPE")
 @SinceKotlin("1.3")
-public fun uintArrayOf(vararg elements: UInt): UIntArray {
-    return UIntArray(elements.size) { index -> elements[index] }
-}
+// TODO: @kotlin.internal.InlineOnly
+public inline fun uintArrayOf(vararg elements: UInt): UIntArray = elements

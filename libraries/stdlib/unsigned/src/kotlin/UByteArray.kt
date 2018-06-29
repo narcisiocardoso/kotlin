@@ -43,8 +43,6 @@ public /*inline*/ fun UByteArray(size: Int, init: (Int) -> UByte): UByteArray {
     return UByteArray(ByteArray(size) { index -> init(index).toByte() })
 }
 
-@Suppress("FORBIDDEN_VARARG_PARAMETER_TYPE")
 @SinceKotlin("1.3")
-public fun ubyteArrayOf(vararg elements: UByte): UByteArray {
-    return UByteArray(elements.size) { index -> elements[index] }
-}
+// TODO: @kotlin.internal.InlineOnly
+public inline fun ubyteArrayOf(vararg elements: UByte): UByteArray = elements

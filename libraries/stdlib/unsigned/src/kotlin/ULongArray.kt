@@ -43,8 +43,6 @@ public /*inline*/ fun ULongArray(size: Int, init: (Int) -> ULong): ULongArray {
     return ULongArray(LongArray(size) { index -> init(index).toLong() })
 }
 
-@Suppress("FORBIDDEN_VARARG_PARAMETER_TYPE")
 @SinceKotlin("1.3")
-public fun ulongArrayOf(vararg elements: ULong): ULongArray {
-    return ULongArray(elements.size) { index -> elements[index] }
-}
+// TODO: @kotlin.internal.InlineOnly
+public inline fun ulongArrayOf(vararg elements: ULong): ULongArray = elements

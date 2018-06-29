@@ -300,11 +300,9 @@ class UnsignedArrayGenerator(val type: UnsignedType, out: PrintWriter) : BuiltIn
     return $arrayType($storageArrayType(size) { index -> init(index).to$storageElementType() })
 }
 
-@Suppress("FORBIDDEN_VARARG_PARAMETER_TYPE")
 @SinceKotlin("1.3")
-public fun $arrayTypeOf(vararg elements: $elementType): $arrayType {
-    return $arrayType(elements.size) { index -> elements[index] }
-}"""
+// TODO: @kotlin.internal.InlineOnly
+public inline fun $arrayTypeOf(vararg elements: $elementType): $arrayType = elements"""
         )
     }
 }
