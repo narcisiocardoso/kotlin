@@ -387,7 +387,7 @@ class RuntimeFunctionCall : EqualityLoweringType()
 class RuntimeOrMethodCall : EqualityLoweringType()
 
 fun translateEquals(lhs: KotlinType, rhs: KotlinType): EqualityLoweringType = when {
-    lhs.isNullableNothing() || rhs.isNullableNothing() -> EqualityOperator()
+    lhs.isNullableNothing() || lhs.isDynamic() -> EqualityOperator()
     lhs.isJsNumber() -> translateEqualsForJsNumber(rhs)
     lhs.isNullableJsNumber() -> translateEqualsForNullableJsNumber(rhs)
     lhs.isLong() -> translateEqualsForLong(rhs)
